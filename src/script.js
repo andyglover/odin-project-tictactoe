@@ -18,7 +18,12 @@ const gameboard = (() => {
         "x"
     ];
     const placeSymbol = function () {
-        spaces[this.getAttribute("data-index")] = "cool";
+        thisIndex = this.getAttribute("data-index");
+        if(spaces[thisIndex]!=="cool"){
+            spaces[thisIndex] = "cool";}
+        else{
+            spaces[thisIndex] = "awesome";
+        }
         console.log(spaces);
         render();
     }

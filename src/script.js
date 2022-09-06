@@ -18,18 +18,25 @@ const gameboard = (() => {
         "x"
     ];
     const placeSymbol = function () {
-        this.textContent="f";
+        spaces[this.getAttribute("data-index")] = "cool";
+        console.log(spaces);
+        render();
     }
     const render = function () {
-        spaces.forEach(element => {
+        const container = document.querySelector("#grid-container");
+        while (container.firstChild) {
+            container.removeChild(container.lastChild);
+          } //remove old items so we can add them all again with the new one.
+        spaces.forEach((element, i) => {
             //make divs
             const div = document.createElement('div');
+            div.setAttribute("data-index", i)
             div.classList.add('grid-item');
             div.textContent=element;
             //add event listener
             div.addEventListener("click", placeSymbol)
             //get container and put divs in it
-            const container = document.querySelector("#grid-container");
+            
             container.appendChild(div);
         });
         

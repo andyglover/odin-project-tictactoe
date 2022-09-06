@@ -17,12 +17,17 @@ const gameboard = (() => {
         "o",
         "x"
     ];
+    const placeSymbol = function () {
+        this.textContent="f";
+    }
     const render = function () {
         spaces.forEach(element => {
             //make divs
             const div = document.createElement('div');
             div.classList.add('grid-item');
             div.textContent=element;
+            //add event listener
+            div.addEventListener("click", placeSymbol)
             //get container and put divs in it
             const container = document.querySelector("#grid-container");
             container.appendChild(div);

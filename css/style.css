@@ -5,5 +5,11 @@ body {
 #grid-container{
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    width: 50%;
+    margin: 0 auto;
 }
 
+.grid-item{
+    text-align:center;
+    font-size: 100px;
+}

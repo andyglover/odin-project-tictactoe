@@ -19,9 +19,11 @@ const gameboard = (() => {
     ];
     const render = function () {
         spaces.forEach(element => {
+            //make divs
             const div = document.createElement('div');
             div.classList.add('grid-item');
             div.textContent=element;
+            //get container and put divs in it
             const container = document.querySelector("#grid-container");
             container.appendChild(div);
         });

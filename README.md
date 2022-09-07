@@ -1,8 +1,6 @@
 
 # odin-project-tictactoe
-Tic Tac Toe project for The Odin Project: https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe
-
-Pardon the dust, this project is under construction!
+This is my Tic Tac Toe project for The Odin Project: https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe
 
 **Link to project:** https://www.andyglover.io/odin-project-tictactoe/
 
@@ -12,15 +10,15 @@ Pardon the dust, this project is under construction!
 
 **Tech used:** HTML, CSS, JavaScript
 
-(This is a description of my project!)
+This is simply "Tic Tac Toe" in Javascript! Click a space to place an "X" then have a friend click to place an "O" (feel free to play as both players if no friend is near)-- the first player to get three in a row wins the game!
 
 ## Optimizations
 
-(These are some improvements I would make to this project, given more time!)
+The assignment called for me to allow players the option to set their name, and to also implement a "start game" button, not just a reset button.
 
 ## Lessons Learned:
 
-(This is what I learned while working on this project!)
+This was my first project that dealt with modules and factory constructors. It gave me a better grasp of how I should be organizing my code. I also learned how to reset an array.
 
 ## Examples:
 Here's a few more repositories of mine you might like to check out:

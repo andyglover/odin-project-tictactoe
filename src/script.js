@@ -135,6 +135,7 @@ const gameState = (() => {
         }
         if(!gameboard.spaces.includes('?')){
             console.log("stalemate!")
+            setWinnerSymbol("Stalemate");
             return true;
         }
         else{

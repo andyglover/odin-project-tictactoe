@@ -7,15 +7,35 @@ body {
     grid-template-columns: repeat(3,1fr);
     width: 50%;
     margin: 0 auto;
+    margin-bottom: 25px;
 }
 
 .grid-item{
     text-align:center;
     font-size: 25px;
+    border: 1px solid black;
 }
+[data-index="0"], [data-index="1"], [data-index="2"]
+{
+    border-top: none;
+}
+[data-index="0"], [data-index="3"], [data-index="6"]
+{
+    border-left: none;
+}
+[data-index="2"], [data-index="5"], [data-index="8"]
+{
+    border-right: none;
+}
+[data-index="6"], [data-index="7"], [data-index="8"]
+{
+    border-bottom: none;
+}
+
 #reset-button{
     font-size: 36px;
 }
 .win-space{
     color:red;
 }
+

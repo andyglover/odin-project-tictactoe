@@ -20,13 +20,12 @@ const gameboard = (() => {
         // }
         let player = gameState.getActivePlayer();
         
-        //if the spot is not taken
-        if(spaces[thisIndex]=="?"){
+        //if the spot is not taken and the game is not over
+        if(spaces[thisIndex]=="?" && !gameState.evaluateWinConditions()){
         //place the symbol of the player whose turn it is
             spaces[thisIndex] = player.symbol;
             console.log("placed symbol")
             gameState.switchActivePlayer();
-            gameState.evaluateWinConditions();
         }
         else {
             console.log("didn't place symbol")
@@ -76,28 +75,39 @@ const gameState = (() => {
     }
     const evaluateWinConditions = () => {
         if(checkBoardForWin(0,3,6) == "win"){
-            console.log("win column 1")
+            console.log("win column 1");
+            return true;
         }
         if(checkBoardForWin(1,4,7) == "win"){
-            console.log("win column 2")
+            console.log("win column 2");
+            return true;
         }
         if(checkBoardForWin(2,5,8) == "win"){
-            console.log("win column 3")
+            console.log("win column 3");
+            return true;
         }
         if(checkBoardForWin(0,1,2) == "win"){
-            console.log("win row 1")
+            console.log("win row 1");
+            return true;
         }
         if(checkBoardForWin(3,4,5) == "win"){
-            console.log("win row 2")
+            console.log("win row 2");
+            return true;
         }
         if(checkBoardForWin(6,7,8) == "win"){
-            console.log("win row 3")
+            console.log("win row 3");
+            return true;
         }
         if(checkBoardForWin(0,4,8) == "win"){
-            console.log("win cross 1")
+            console.log("win cross 1");
+            return true;
         }
         if(checkBoardForWin(2,4,6) == "win"){
-            console.log("win cross 2")
+            console.log("win cross 2");
+            return true;
+        }
+        else{
+            return false;
         }
     }
     const checkBoardForWin = (position1, position2, position3) => {

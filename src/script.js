@@ -33,6 +33,7 @@ const gameboard = (() => {
         console.log(spaces);
         render();
     }
+    
     const render = function () {
         const container = document.querySelector("#grid-container");
         while (container.firstChild) {
@@ -49,14 +50,16 @@ const gameboard = (() => {
             //get container and put divs in it
             container.appendChild(div);
         });
-        //if a win is detected, display the reset button
+        //if a win is detected, 
         if (gameState.evaluateWinConditions()){
+            //display the reset button
             const button = document.createElement('button');
             button.textContent = `${gameState.getWinnerSymbol()} wins! click to start new game!`;
             button.id = "reset-button";
             button.addEventListener("click", gameState.resetGame)
             document.body.appendChild(button);
         }
+
     }
     return { render, spaces };
 })();
@@ -92,34 +95,42 @@ const gameState = (() => {
     const evaluateWinConditions = () => {
         if(checkBoardForWin(0,3,6) == "win"){
             console.log("win column 1");
+            tagWinningSpaces(0,3,6);
             return true;
         }
         if(checkBoardForWin(1,4,7) == "win"){
             console.log("win column 2");
+            tagWinningSpaces(1,4,7);
             return true;
         }
         if(checkBoardForWin(2,5,8) == "win"){
             console.log("win column 3");
+            tagWinningSpaces(2,5,8);
             return true;
         }
         if(checkBoardForWin(0,1,2) == "win"){
             console.log("win row 1");
+            tagWinningSpaces(0,1,2);
             return true;
         }
         if(checkBoardForWin(3,4,5) == "win"){
             console.log("win row 2");
+            tagWinningSpaces(3,4,5);
             return true;
         }
         if(checkBoardForWin(6,7,8) == "win"){
             console.log("win row 3");
+            tagWinningSpaces(6,7,8);
             return true;
         }
         if(checkBoardForWin(0,4,8) == "win"){
             console.log("win cross 1");
+            tagWinningSpaces(0,4,8);
             return true;
         }
         if(checkBoardForWin(2,4,6) == "win"){
             console.log("win cross 2");
+            tagWinningSpaces(2,4,6);
             return true;
         }
         if(!gameboard.spaces.includes('?')){
@@ -129,6 +140,14 @@ const gameState = (() => {
         else{
             return false;
         }
+    }
+    const tagWinningSpaces = (one, two, three) => {
+        let winSpaceOne = document.querySelector(`[data-index="${one}"]`);
+        let winSpaceTwo = document.querySelector(`[data-index="${two}"]`);
+        let winSpaceThree = document.querySelector(`[data-index="${three}"]`);
+        winSpaceOne.classList.add('win-space');
+        winSpaceTwo.classList.add('win-space');
+        winSpaceThree.classList.add('win-space');
     }
     const checkBoardForWin = (position1, position2, position3) => {
         if (gameboard.spaces[position1] != "?" && gameboard.spaces[position1] == gameboard.spaces[position2] && gameboard.spaces[position1] == gameboard.spaces[position3]) {

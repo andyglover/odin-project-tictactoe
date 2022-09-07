@@ -12,7 +12,6 @@ const gameboard = (() => {
         "?","?","?"
     ];
     const placeSymbol = function () {
-        
         thisIndex = this.getAttribute("data-index"); //gets the index of the position that was clicked
         // if(spaces[thisIndex]!=="cool"){
         //     spaces[thisIndex] = "cool";}
@@ -30,9 +29,6 @@ const gameboard = (() => {
         else {
             console.log("didn't place symbol")
         }
-        
-        
-        
         console.log(spaces);
         render();
     }

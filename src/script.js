@@ -62,9 +62,13 @@ const gameState = (() => {
     //track whose turn it is
 
     //at the beginning of game it is player one's turn
+    let activePlayer = playerOne;
     const getActivePlayer = () => {
-        return playerOne;}
-    return { getActivePlayer };
+        return activePlayer;}
+    const setActivePlayer = (player) => {
+        activePlayer = player;
+    }
+    return { getActivePlayer, setActivePlayer };
 })();
 playerOne.sayHello();
 playerTwo.sayHello();

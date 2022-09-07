@@ -23,9 +23,10 @@ const gameboard = (() => {
         //if the spot is not taken
         if(spaces[thisIndex]=="?"){
         //place the symbol of the player whose turn it is
-        spaces[thisIndex] = player.symbol;
-        console.log("placed symbol")
-        gameState.switchActivePlayer();
+            spaces[thisIndex] = player.symbol;
+            console.log("placed symbol")
+            gameState.switchActivePlayer();
+            gameState.evaluateWinConditions();
         }
         else {
             console.log("didn't place symbol")
@@ -50,7 +51,7 @@ const gameboard = (() => {
             container.appendChild(div);
         });
     }
-    return { render };
+    return { render, spaces };
 })();
 
 const playerOne = playerFactory("P1", "X")
@@ -75,7 +76,41 @@ const gameState = (() => {
             setActivePlayer(playerOne)
         }
     }
-    return { getActivePlayer, setActivePlayer, switchActivePlayer};
+    const evaluateWinConditions = () => {
+        if(checkBoardForWin(0,3,6) == "win"){
+            console.log("win column 1")
+        }
+        if(checkBoardForWin(1,4,7) == "win"){
+            console.log("win column 2")
+        }
+        if(checkBoardForWin(2,5,8) == "win"){
+            console.log("win column 3")
+        }
+        if(checkBoardForWin(0,1,2) == "win"){
+            console.log("win row 1")
+        }
+        if(checkBoardForWin(3,4,5) == "win"){
+            console.log("win row 2")
+        }
+        if(checkBoardForWin(6,7,8) == "win"){
+            console.log("win row 3")
+        }
+        if(checkBoardForWin(0,4,8) == "win"){
+            console.log("win cross 1")
+        }
+        if(checkBoardForWin(2,4,6) == "win"){
+            console.log("win cross 2")
+        }
+    }
+    const checkBoardForWin = (position1, position2, position3) => {
+        if (gameboard.spaces[position1] != "?" && gameboard.spaces[position1] == gameboard.spaces[position2] && gameboard.spaces[position1] == gameboard.spaces[position3]) {
+            return "win";
+        }
+        else {
+            console.log("no match");
+        }
+    }
+    return { getActivePlayer, switchActivePlayer, evaluateWinConditions, checkBoardForWin};
 })();
 playerOne.sayHello();
 playerTwo.sayHello();

@@ -6,6 +6,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     width: 50%;
+    aspect-ratio: 1 / 1;
     margin: 0 auto;
     margin-bottom: 25px;
 }

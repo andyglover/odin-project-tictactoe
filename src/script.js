@@ -7,15 +7,15 @@ const playerFactory = (name, symbol) => {
 
 const gameboard = (() => {
     const spaces = [
-        "x",
-        "o",
-        "x",
-        "o",
-        "x",
-        "o",
-        "x",
-        "o",
-        "x"
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?",
+        "?"
     ];
     const placeSymbol = function () {
         
@@ -26,9 +26,18 @@ const gameboard = (() => {
         //     spaces[thisIndex] = "awesome";
         // }
         let player = gameState.getActivePlayer();
-        spaces[thisIndex] = player.symbol;
         
+        //if the spot is not taken
+        if(spaces[thisIndex]=="?"){
         //place the symbol of the player whose turn it is
+        spaces[thisIndex] = player.symbol;
+        console.log("placed symbol")
+        }
+        else {
+            console.log("didn't place symbol")
+        }
+        
+        
         
         console.log(spaces);
         render();

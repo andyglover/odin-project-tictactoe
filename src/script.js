@@ -25,6 +25,7 @@ const gameboard = (() => {
         //place the symbol of the player whose turn it is
         spaces[thisIndex] = player.symbol;
         console.log("placed symbol")
+        gameState.switchActivePlayer();
         }
         else {
             console.log("didn't place symbol")
@@ -46,10 +47,8 @@ const gameboard = (() => {
             //add event listener
             div.addEventListener("click", placeSymbol)
             //get container and put divs in it
-            
             container.appendChild(div);
         });
-        
     }
     return { render };
 })();
@@ -62,12 +61,21 @@ const gameState = (() => {
 
     //at the beginning of game it is player one's turn
     let activePlayer = playerOne;
+    
     const getActivePlayer = () => {
         return activePlayer;}
     const setActivePlayer = (player) => {
         activePlayer = player;
     }
-    return { getActivePlayer, setActivePlayer };
+    const switchActivePlayer = () => {
+        if(getActivePlayer()==playerOne){
+            setActivePlayer(playerTwo)
+        }
+        else{
+            setActivePlayer(playerOne)
+        }
+    }
+    return { getActivePlayer, setActivePlayer, switchActivePlayer};
 })();
 playerOne.sayHello();
 playerTwo.sayHello();

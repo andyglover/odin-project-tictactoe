@@ -49,6 +49,7 @@ const gameboard = (() => {
             //get container and put divs in it
             container.appendChild(div);
         });
+        //if a win is detected, display the reset button
         if (gameState.evaluateWinConditions()){
             const button = document.createElement('button');
             button.textContent = "start new game!";

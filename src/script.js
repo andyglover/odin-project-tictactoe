@@ -53,11 +53,9 @@ const gameboard = (() => {
         //if a win is detected, 
         if (gameState.evaluateWinConditions()){
             //display the reset button
-            const button = document.createElement('button');
-            button.textContent = `${gameState.getWinnerSymbol()} wins! click to start new game!`;
-            button.id = "reset-button";
-            button.addEventListener("click", gameState.resetGame)
-            document.body.appendChild(button);
+            if(!gameState.resetButton.getDisplayed()){
+                gameState.resetButton.display();
+            }
         }
 
     }
@@ -159,6 +157,29 @@ const gameState = (() => {
             return "no win";
         }
     }
+    const resetButton = (() => {
+        let displayed = false;
+        const getDisplayed = () => {
+            return displayed;
+        }
+        const setDisplayed = (bool) => {
+            displayed = bool;
+        }
+        const remove = () => {
+            const button = document.querySelector('#reset-button');
+            button.parentNode.removeChild(button);
+            setDisplayed(false);
+        }
+        const display = () => {
+            const button = document.createElement('button');
+            button.textContent = `${gameState.getWinnerSymbol()} wins! click to start new game!`;
+            button.id = "reset-button";
+            button.addEventListener("click", gameState.resetGame)
+            document.body.appendChild(button);
+            setDisplayed(true);
+        }
+        return {remove, display, getDisplayed}
+    })();
     const resetGame = () => {
         //reset the array
         gameboard.spaces.forEach((element, i) => {
@@ -166,14 +187,14 @@ const gameState = (() => {
         })
         //reset active player
         setActivePlayer(playerOne)
-        //remove the delete button
-        const button = document.querySelector('#reset-button');
-        button.parentNode.removeChild(button);
+        //remove the reset button
+        resetButton.remove();
         //render
         gameboard.render();
     }
-    return { getActivePlayer, switchActivePlayer, evaluateWinConditions, checkBoardForWin, resetGame, getWinnerSymbol};
+    return { getActivePlayer, switchActivePlayer, evaluateWinConditions, checkBoardForWin, resetGame, getWinnerSymbol, resetButton};
 })();
+
 playerOne.sayHello();
 playerTwo.sayHello();
 gameboard.render();

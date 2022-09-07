@@ -52,7 +52,7 @@ const gameboard = (() => {
         //if a win is detected, display the reset button
         if (gameState.evaluateWinConditions()){
             const button = document.createElement('button');
-            button.textContent = "start new game!";
+            button.textContent = `${gameState.getWinnerSymbol()} wins! click to start new game!`;
             button.id = "reset-button";
             button.addEventListener("click", gameState.resetGame)
             document.body.appendChild(button);
@@ -152,7 +152,7 @@ const gameState = (() => {
         //render
         gameboard.render();
     }
-    return { getActivePlayer, switchActivePlayer, evaluateWinConditions, checkBoardForWin, resetGame};
+    return { getActivePlayer, switchActivePlayer, evaluateWinConditions, checkBoardForWin, resetGame, getWinnerSymbol};
 })();
 playerOne.sayHello();
 playerTwo.sayHello();

@@ -67,12 +67,20 @@ const playerTwo = playerFactory("P2", "O")
 const gameState = (() => {
     //at the beginning of game it is player one's turn
     let activePlayer = playerOne;
+    let winnerSymbol = null;
     
     const getActivePlayer = () => {
         return activePlayer;}
     const setActivePlayer = (player) => {
         activePlayer = player;
     }
+
+    const getWinnerSymbol = () => {
+        return winnerSymbol;}
+    const setWinnerSymbol = (symbol) => {
+        winnerSymbol = symbol;
+    }
+
     const switchActivePlayer = () => {
         if(getActivePlayer()==playerOne){
             setActivePlayer(playerTwo)
@@ -124,10 +132,11 @@ const gameState = (() => {
     }
     const checkBoardForWin = (position1, position2, position3) => {
         if (gameboard.spaces[position1] != "?" && gameboard.spaces[position1] == gameboard.spaces[position2] && gameboard.spaces[position1] == gameboard.spaces[position3]) {
+            setWinnerSymbol(gameboard.spaces[position1]);
             return "win";
         }
         else {
-            console.log("no match");
+            return "no win";
         }
     }
     const resetGame = () => {

@@ -1,6 +1,6 @@
 
 # odin-project-tictactoe
-This is my Tic Tac Toe project for The Odin Project: https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe
+This is my Tic Tac Toe project for [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe)
 
 **Link to project:** https://www.andyglover.io/odin-project-tictactoe/
 

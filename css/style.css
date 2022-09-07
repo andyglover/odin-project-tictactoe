@@ -1,5 +1,6 @@
 body {
     color: red;
+    text-align: center;
 }
 
 #grid-container{
@@ -12,4 +13,7 @@ body {
 .grid-item{
     text-align:center;
     font-size: 25px;
+}
+#reset-button{
+    font-size: 36px;
 }

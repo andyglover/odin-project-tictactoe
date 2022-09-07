@@ -6,7 +6,7 @@ const playerFactory = (name, symbol) => {
 }
 
 const gameboard = (() => {
-    const spaces = [
+    let spaces = [
         "?","?","?",
         "?","?","?",
         "?","?","?"
@@ -49,6 +49,13 @@ const gameboard = (() => {
             //get container and put divs in it
             container.appendChild(div);
         });
+        if (gameState.evaluateWinConditions()){
+            const button = document.createElement('button');
+            button.textContent = "start new game!";
+            button.id = "reset-button";
+            button.addEventListener("click", gameState.resetGame)
+            document.body.appendChild(button);
+        }
     }
     return { render, spaces };
 })();
@@ -118,7 +125,20 @@ const gameState = (() => {
             console.log("no match");
         }
     }
-    return { getActivePlayer, switchActivePlayer, evaluateWinConditions, checkBoardForWin};
+    const resetGame = () => {
+        //reset the array
+        gameboard.spaces.forEach((element, i) => {
+            gameboard.spaces[i] = "?"
+        })
+        //reset active player
+        setActivePlayer(playerOne)
+        //remove the delete button
+        const button = document.querySelector('#reset-button');
+        button.parentNode.removeChild(button);
+        //render
+        gameboard.render();
+    }
+    return { getActivePlayer, switchActivePlayer, evaluateWinConditions, checkBoardForWin, resetGame};
 })();
 playerOne.sayHello();
 playerTwo.sayHello();

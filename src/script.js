@@ -114,6 +114,10 @@ const gameState = (() => {
             console.log("win cross 2");
             return true;
         }
+        if(!gameboard.spaces.includes('?')){
+            console.log("stalemate!")
+            return true;
+        }
         else{
             return false;
         }

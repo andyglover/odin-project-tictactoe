@@ -58,8 +58,6 @@ const playerOne = playerFactory("P1", "X")
 const playerTwo = playerFactory("P2", "O")
 
 const gameState = (() => {
-    //track whose turn it is
-
     //at the beginning of game it is player one's turn
     let activePlayer = playerOne;
     

@@ -18,12 +18,18 @@ const gameboard = (() => {
         "x"
     ];
     const placeSymbol = function () {
-        thisIndex = this.getAttribute("data-index");
-        if(spaces[thisIndex]!=="cool"){
-            spaces[thisIndex] = "cool";}
-        else{
-            spaces[thisIndex] = "awesome";
-        }
+        
+        thisIndex = this.getAttribute("data-index"); //gets the index of the position that was clicked
+        // if(spaces[thisIndex]!=="cool"){
+        //     spaces[thisIndex] = "cool";}
+        // else{
+        //     spaces[thisIndex] = "awesome";
+        // }
+        let player = gameState.getActivePlayer();
+        spaces[thisIndex] = player.symbol;
+        
+        //place the symbol of the player whose turn it is
+        
         console.log(spaces);
         render();
     }
@@ -48,8 +54,18 @@ const gameboard = (() => {
     }
     return { render };
 })();
+
 const playerOne = playerFactory("P1", "X")
 const playerTwo = playerFactory("P2", "O")
+
+const gameState = (() => {
+    //track whose turn it is
+
+    //at the beginning of game it is player one's turn
+    const getActivePlayer = () => {
+        return playerOne;}
+    return { getActivePlayer };
+})();
 playerOne.sayHello();
 playerTwo.sayHello();
 gameboard.render();

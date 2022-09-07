@@ -7,15 +7,9 @@ const playerFactory = (name, symbol) => {
 
 const gameboard = (() => {
     const spaces = [
-        "?",
-        "?",
-        "?",
-        "?",
-        "?",
-        "?",
-        "?",
-        "?",
-        "?"
+        "?","?","?",
+        "?","?","?",
+        "?","?","?"
     ];
     const placeSymbol = function () {
         

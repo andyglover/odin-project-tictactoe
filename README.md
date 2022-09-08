@@ -23,14 +23,12 @@ This was my first project that dealt with modules and factory constructors. It g
 ## Examples:
 Here's a few more repositories of mine you might like to check out:
 
-**Calculator:** https://github.com/andyglover/odin-calculator
+**Admin Dashboard:** https://github.com/andyglover/odin-project-admin-dashboard
 
-**Rock Paper Scissors:** https://github.com/andyglover/odin-rock-paper-scissors
+**Calculator:** https://github.com/andyglover/odin-calculator
 
 **GIF Thingy:** https://github.com/andyglover/gif-thingy
 
-**Admin Dashboard:** https://github.com/andyglover/odin-project-admin-dashboard
+**Library:** https://github.com/andyglover/odin-project-library
 
-**ANDYGLOVER.IO:** https://github.com/andyglover/andyglover.github.io
-
-**ANDYGLOVER.DEV:** https://github.com/andyglover/andyglover.dev
+**Rock Paper Scissors:** https://github.com/andyglover/odin-rock-paper-scissors
